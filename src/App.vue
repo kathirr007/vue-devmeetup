@@ -1,12 +1,12 @@
 <template>
   <v-app>
-    <v-navigation-drawer temporary dark v-model="sideNav" class="teal" app>
+    <v-navigation-drawer dark temporary v-model="sideNav" class="teal" app>
       <v-list>
         <v-list-tile v-for="item in menuItems" :key="item.title" router :to="item.link">
-          <v-list-tile-action class="white--text">
+          <v-list-tile-action>
             <v-icon>{{item.icon}}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-content class="white--text">{{item.title}}</v-list-tile-content>
+          <v-list-tile-content>{{item.title}}</v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
@@ -30,7 +30,7 @@
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <main>
+    <main class>
       <router-view></router-view>
     </main>
   </v-app>
@@ -53,3 +53,12 @@
     }
   };
 </script>
+
+<style lang="scss">
+  a[class~="v-list__tile--active"] {
+    color: darkblue !important;
+  }
+  // .primary--text {
+  //   color: red !important;
+  // }
+</style>
