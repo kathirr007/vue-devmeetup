@@ -24,7 +24,7 @@
       </v-flex>
     </v-layout>
     <v-layout row wrap class="mt-2">
-      <v-flex xs12 class>
+      <v-flex xs12 class="text-xs-center">
         <p>Join our Awesome Meetups!</p>
       </v-flex>
     </v-layout>
@@ -33,26 +33,10 @@
 
 <script>
   export default {
-    data() {
-      return {
-        meetups: [
-          {
-            imageUrl: "https://picsum.photos/1024/700/?random",
-            id: "1",
-            title: "carousel-01"
-          },
-          {
-            imageUrl: "https://picsum.photos/1024/700/?random",
-            id: "2",
-            title: "carousel-02"
-          },
-          {
-            imageUrl: "https://picsum.photos/1024/700/?random",
-            id: "3",
-            title: "carousel-03"
-          }
-        ]
-      };
+    computed: {
+      meetups() {
+        return this.$store.getters.featuredMeetups;
+      }
     },
     methods: {
       onLoadMeetup(id) {
