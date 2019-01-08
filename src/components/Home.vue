@@ -1,17 +1,23 @@
 <template>
-  <v-container class>
+  <v-container class fluid>
     <v-layout row wrap class="mb-3">
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-        <v-btn large color="info" router to="/meetups">Explore Meetups</v-btn>
+        <v-btn large dark color="teal" router to="/meetups">Explore Meetups</v-btn>
       </v-flex>
       <v-flex xs12 sm6 class="text-xs-center text-sm-left">
-        <v-btn large color="info" router to="/meetup/new">Organize Meetup</v-btn>
+        <v-btn large dark color="teal" router to="/meetup/new">Organize Meetup</v-btn>
       </v-flex>
     </v-layout>
     <v-layout row wrap>
       <v-flex xs12>
-        <v-carousel>
-          <v-carousel-item v-for="(meetup,i) in meetups" :key="i" :src="meetup.imageUrl">
+        <v-carousel style="cursor: pointer">
+          <v-carousel-item
+            v-for="(meetup,i) in meetups"
+            :key="i"
+            :src="meetup.imageUrl"
+            @click="onLoadMeetup(meetup.id)"
+            style="cursor: pointer"
+          >
             <div align-center class="title">{{meetup.title}}</div>
           </v-carousel-item>
         </v-carousel>
@@ -47,6 +53,11 @@
           }
         ]
       };
+    },
+    methods: {
+      onLoadMeetup(id) {
+        this.$router.push(`/meetups/${id}`);
+      }
     }
   };
 </script>
