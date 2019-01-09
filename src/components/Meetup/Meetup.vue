@@ -6,7 +6,7 @@
           <v-card-title>
             <h4 class="headline teal--text">{{ meetup.title }}</h4>
           </v-card-title>
-          <v-img height="400" :src="meetup.imageUrl"></v-img>
+          <v-img contain height="400" :src="meetup.imageUrl"></v-img>
           <v-card-text class="mt-2">
             <div
               class="info--text title mb-2"

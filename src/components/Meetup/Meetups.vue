@@ -5,17 +5,22 @@
         <v-card class="teal lighten-2">
           <v-container fluid>
             <v-layout row wrap>
-              <v-flex xs5 sm4 md3>
-                <v-img height="125" :src="meetup.imageUrl"></v-img>
+              <v-flex xs12 sm4 md3>
+                <v-img cover height="125" :src="meetup.imageUrl"></v-img>
               </v-flex>
-              <v-flex xs7 sm8 md9>
-                <v-card-title primary-title class="pa-3">
+              <v-flex sm8 md9>
+                <v-card-title
+                  primary-title
+                  :class="{'pa-3': $vuetify.breakpoint.smAndUp, 'pa-0 py-3': $vuetify.breakpoint.xs}"
+                >
                   <div>
                     <h4 class="headline white--text mb-0">{{meetup.title}}</h4>
                     <div>{{ formatDate(meetup.date) }}</div>
                   </div>
                 </v-card-title>
-                <v-card-actions class="pa-0 px-3">
+                <v-card-actions
+                  :class="{'pa-0 px-3': $vuetify.breakpoint.smAndUp, 'pa-0': $vuetify.breakpoint.xs}"
+                >
                   <v-btn class="teal" dark :to="`meetups/${meetup.id}`">
                     <v-icon left light>arrow_forward</v-icon>View Meetup
                   </v-btn>
