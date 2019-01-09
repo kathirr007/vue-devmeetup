@@ -6,12 +6,10 @@
           <v-card-title>
             <h4 class="headline teal--text">{{ meetup.title }}</h4>
           </v-card-title>
-          <v-img contain height="400" :src="meetup.imageUrl"></v-img>
+          <v-img responsive height="400" :src="meetup.imageUrl"></v-img>
           <v-card-text class="mt-2">
-            <div
-              class="info--text title mb-2"
-            >{{ format(meetup.date, "dddd, Do MMMM, YYYY") }} -Where it takes place</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At sequi placeat sint eveniet quisquam aliquam autem temporibus vel velit? Vitae fuga soluta laudantium porro sunt labore ipsam consequuntur magnam. Debitis.</p>
+            <div class="info--text title mb-2">{{ meetup.date | date }} - {{ meetup.location }}</div>
+            <p>{{meetup.description}}</p>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>

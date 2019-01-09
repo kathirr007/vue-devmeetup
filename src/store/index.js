@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import * as firebase from 'firebase';
 
 Vue.use(Vuex);
 
@@ -11,31 +12,41 @@ export default new Vuex.Store({
         imageUrl: 'https://lorempixel.com/1024/700/sports',
         id: 'qsdfhsdfghjk',
         title: 'Meetup-01',
-        date: '2019-02-18'
+        date: new Date(),
+        location: 'Madurai',
+        description: 'The meetup is happening at Madurai'
       },
       {
         imageUrl: 'https://lorempixel.com/1024/700/cats',
         id: '12wedrt678uijk',
         title: 'Meetup-02',
-        date: '2019-02-26'
+        date: new Date(),
+        location: 'Delhi',
+        description: 'The meetup is happening at Delhi'
       },
       {
         imageUrl: 'https://lorempixel.com/1024/700/business',
         id: '1234eftyukl',
         title: 'Meetup-03',
-        date: '2019-02-10'
+        date: new Date(),
+        location: 'Chennai',
+        description: 'The meetup is happening at Chennai'
       },
       {
         imageUrl: 'https://lorempixel.com/1024/700/fashion',
         id: 'dfgh7678ijhg',
         title: 'Meetup-04',
-        date: '2019-02-28'
+        date: new Date(),
+        location: 'Bangalore',
+        description: 'The meetup is happening at Bangalore'
       },
       {
         imageUrl: 'https://lorempixel.com/1024/700/animals',
         id: 'qw46yghjio',
         title: 'Meetup-05',
-        date: '2019-02-24'
+        date: new Date(),
+        location: 'Mysore',
+        description: 'The meetup is happening at Mysore'
       }
     ],
     user: {
@@ -46,6 +57,9 @@ export default new Vuex.Store({
   mutations: {
     createMeetup(state, payload) {
       state.loadedMeetups.push(payload);
+    },
+    setUser(state, payload) {
+      state.user = payload;
     }
   },
   actions: {
@@ -55,10 +69,25 @@ export default new Vuex.Store({
         location: payload.location,
         imageUrl: payload.imageUrl,
         description: payload.description,
-        date: payload.date,
+        date: new Date(),
         id: payload.id
       };
       commit('createMeetup', meetup);
+    },
+    signUserUp({ commit }, payload) {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(payload.email, payload.password)
+        .then(user => {
+          const newUser = {
+            id: user.uid,
+            registeredMeetups: []
+          };
+          commit('setUser', newUser);
+        })
+        .catch(err => {
+          console.warn(err);
+        });
     }
   },
   getters: {

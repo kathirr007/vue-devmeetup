@@ -45,11 +45,21 @@
               <v-textarea label="Description" v-model="description" name="description" required></v-textarea>
             </v-flex>
           </v-layout>
+          <v-layout row class="mb-3">
+            <v-flex xs12 sm6 offset-sm3>
+              <v-date-picker header-color="teal" color="cyan" v-model="date"></v-date-picker>
+            </v-flex>
+          </v-layout>
           <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
+              <v-time-picker header-color="teal" color="cyan" v-model="time"></v-time-picker>
+            </v-flex>
+          </v-layout>
+          <v-layout row class="mt-3">
             <v-flex xs12 sm6 offset-sm3>
               <v-btn
                 :disabled="!formIsValid"
-                class="teal white--text text-capitalize ma-0"
+                class="teal white--text ma-0"
                 type="submit"
               >Create Meetup</v-btn>
             </v-flex>
@@ -67,7 +77,9 @@
         title: "",
         location: "",
         description: "",
-        imageUrl: ""
+        imageUrl: "",
+        date: new Date().toISOString().substr(0, 10),
+        time: new Date()
       };
     },
     computed: {
@@ -78,6 +90,20 @@
           this.imageUrl !== "" &&
           this.description !== ""
         );
+      },
+      submitableDateTime() {
+        const date = new Date(this.date);
+        if (typeof this.time === "string") {
+          const hours = this.time.match(/^(\d+)/)[1];
+          const minutes = this.time.match(/:(\d+)/)[1];
+          date.setHours(hours);
+          date.setMinutes(minutes);
+        } else {
+          date.setHours(this.time.getHours());
+          date.setMinutes(this.time.getMinutes());
+        }
+        // console.log(date);
+        return date;
       }
     },
     methods: {
@@ -90,7 +116,7 @@
           location: this.location,
           imageUrl: this.imageUrl,
           description: this.description,
-          date: new Date(),
+          date: this.submitableDateTime,
           id: `wert78ikjhgfd${Math.floor(Math.random() * 10000)}`
         };
         this.$store.dispatch("createMeetup", meetupData);
