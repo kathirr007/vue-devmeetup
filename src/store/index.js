@@ -49,10 +49,7 @@ export default new Vuex.Store({
         description: 'The meetup is happening at Mysore'
       }
     ],
-    user: {
-      id: 'asdfghuio1234',
-      registeredMeetups: ['qw46yghjio']
-    }
+    user: null
   },
   mutations: {
     createMeetup(state, payload) {
@@ -99,6 +96,9 @@ export default new Vuex.Store({
     },
     loadedMeetup(state) {
       return meetupId => state.loadedMeetups.find(meetup => meetup.id === meetupId);
+    },
+    user(state) {
+      return state.user;
     }
   }
 });

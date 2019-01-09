@@ -73,6 +73,16 @@
         return this.password !== this.confirmPassword
           ? "Passwords do not match"
           : true;
+      },
+      user() {
+        return this.$store.getters.user;
+      }
+    },
+    watch: {
+      user(value) {
+        if (value !== null && value !== undefined) {
+          this.$router.push("/");
+        }
       }
     },
     methods: {
