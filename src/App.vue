@@ -65,7 +65,7 @@
       userIsAuthenticated() {
         return (
           this.$store.getters.user !== null &&
-          this.$sore.getters.user !== undefined
+          this.$store.getters.user !== undefined
         );
       }
     }
