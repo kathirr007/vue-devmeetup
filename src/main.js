@@ -1,18 +1,20 @@
 import Vue from 'vue';
 import './plugins/vuetify';
 // import Vuetify from 'vuetify';
-import App from './App.vue';
 import * as firebase from 'firebase';
+import App from './App.vue';
 import router from './router';
 // import store from './store';
 import './registerServiceWorker';
 import store from '@/store';
 import DateFilter from '@/filters/date';
+import AlertCmp from './components/shared/Alert.vue';
 
 // Vue.use(Vuetify);
 Vue.config.productionTip = false;
 
 Vue.filter('date', DateFilter);
+Vue.component('app-alert', AlertCmp);
 
 new Vue({
   el: '#app',

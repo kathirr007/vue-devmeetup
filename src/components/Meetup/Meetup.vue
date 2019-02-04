@@ -8,7 +8,7 @@
           </v-card-title>
           <v-img responsive height="400" :src="meetup.imageUrl"></v-img>
           <v-card-text class="mt-2">
-            <div class="info--text title mb-2">{{ meetup.date | date }} - {{ meetup.location }}</div>
+            <div class="info--text title mb-2">{{ formatDate(meetup.date) }} - {{ meetup.location }}</div>
             <p>{{meetup.description}}</p>
           </v-card-text>
           <v-card-actions>
@@ -29,6 +29,11 @@
       return {
         format
       };
+    },
+    methods: {
+      formatDate(date) {
+        return format(date, "Do MMM YYYY hh:mm A");
+      }
     },
     props: ["id"],
     computed: {

@@ -1,5 +1,10 @@
 <template>
   <v-container>
+    <v-layout row wrap v-if="err">
+      <v-flex xs12 sm6 offset-sm3>
+        <app-alert @dismissed="onDismissed" :text="err.message"></app-alert>
+      </v-flex>
+    </v-layout>
     <v-layout row wrap>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
@@ -47,7 +52,11 @@
                 </v-layout>
                 <v-layout row>
                   <v-flex xs12>
-                    <v-btn color="teal white--text ma-0" type="submit">Sign up</v-btn>
+                    <v-btn color="teal white--text ma-0" type="submit" :disabled="loading" :loading="loading">Sign up
+                      <span slot="loader" class="custom-loader">
+                        <v-icon light>cached</v-icon>
+                      </span>
+                    </v-btn>
                   </v-flex>
                 </v-layout>
               </form>
@@ -76,6 +85,12 @@
       },
       user() {
         return this.$store.getters.user;
+      },
+      err() {
+        return this.$store.getters.error;
+      },
+      loading() {
+        return this.$store.getters.loading;
       }
     },
     watch: {
@@ -96,6 +111,10 @@
           email: this.email,
           password: this.password
         });
+      },
+      onDismissed() {
+        console.log('Alert Dismissed...');
+        this.$store.dispatch('clearError');
       }
     }
   };

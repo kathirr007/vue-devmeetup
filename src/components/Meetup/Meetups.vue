@@ -15,7 +15,7 @@
                 >
                   <div>
                     <h4 class="headline white--text mb-0">{{meetup.title}}</h4>
-                    <div>{{ meetup.date | date }}</div>
+                    <div>{{ formatDate(meetup.date) }}</div>
                   </div>
                 </v-card-title>
                 <v-card-actions
@@ -45,7 +45,7 @@
     },
     methods: {
       formatDate(date) {
-        return format(date, "Do MMM YYYY");
+        return format(date, "Do MMM YYYY hh:mm A");
       }
     },
     computed: {
