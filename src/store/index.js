@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as firebase from 'firebase';
@@ -49,17 +50,54 @@ export default new Vuex.Store({
         description: 'The meetup is happening at Mysore'
       }
     ],
-    user: null
+    user: null,
+    loading: false,
+    error: null
   },
   mutations: {
+    setLoadedMeetups(state, payload) {
+      state.loadedMeetups = payload
+    },
     createMeetup(state, payload) {
       state.loadedMeetups.push(payload);
     },
     setUser(state, payload) {
       state.user = payload;
+    },
+    setLoading(state, payload) {
+      state.loading = payload;
+    },
+    setError(state, payload) {
+      state.error = payload;
+    },
+    clearError(state) {
+      state.error = null;
     }
   },
   actions: {
+    loadMeetups({ commit }) {
+      commit('setLoading', true)
+      firebase.database().ref('meetups').once('value')
+        .then((data) => {
+          const meetups = []
+          const obj = data.val()
+          for (const key in obj) {
+            meetups.push({
+              id: key,
+              title: obj[key].title,
+              description: obj[key].description,
+              imageUrl: obj[key].imageUrl,
+              date: obj[key].date,
+            })
+          }
+          commit('setLoadedMeetups', meetups)
+          commit('setLoading', false)
+        })
+        .catch((error) => {
+          console.log(error)
+          commit('setLoading', true)
+        })
+    },
     createMeetup({ commit }, payload) {
       const meetup = {
         title: payload.title,
@@ -80,10 +118,13 @@ export default new Vuex.Store({
     //   Reach out to firebase and store it
     },
     signUserUp({ commit }, payload) {
+      commit('setLoading', true)
+      commit('clearError')
       firebase
         .auth()
         .createUserWithEmailAndPassword(payload.email, payload.password)
         .then(user => {
+          commit('setLoading', false)
           const newUser = {
             id: user.uid,
             registeredMeetups: []
@@ -91,14 +132,19 @@ export default new Vuex.Store({
           commit('setUser', newUser);
         })
         .catch(err => {
+          commit('setLoading', false)
+          commit('setError', err)
           console.warn(err);
         });
     },
     signUserIn({ commit }, payload) {
+      commit('setLoading', true)
+      commit('clearError')
       firebase
         .auth()
         .signInWithEmailAndPassword(payload.email, payload.password)
         .then(user => {
+          commit('setLoading', false)
           const newUser = {
             id: user.uid,
             registeredMeetups: []
@@ -106,6 +152,8 @@ export default new Vuex.Store({
           commit('setUser', newUser);
         })
         .catch(err => {
+          commit('setLoading', false)
+          commit('setError', err)
           console.warn(err);
         });
     }
@@ -122,6 +170,12 @@ export default new Vuex.Store({
     },
     user(state) {
       return state.user;
+    },
+    loading(state) {
+      return state.loading
+    },
+    error(state) {
+      return state.error
     }
   }
 });

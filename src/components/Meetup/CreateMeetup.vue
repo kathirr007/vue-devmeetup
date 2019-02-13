@@ -93,16 +93,18 @@
       },
       submitableDateTime() {
         const date = new Date(this.date);
+
         if (typeof this.time === "string") {
           const hours = this.time.match(/^(\d+)/)[1];
           const minutes = this.time.match(/:(\d+)/)[1];
+
           date.setHours(hours);
           date.setMinutes(minutes);
         } else {
           date.setHours(this.time.getHours());
           date.setMinutes(this.time.getMinutes());
         }
-        // console.log(date);
+
         return date;
       }
     },
@@ -119,6 +121,7 @@
           date: this.submitableDateTime,
           id: `wert78ikjhgfd${Math.floor(Math.random() * 10000)}`
         };
+
         this.$store.dispatch("createMeetup", meetupData);
         this.$router.push("/meetups");
       }

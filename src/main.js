@@ -29,5 +29,6 @@ new Vue({
       projectId: 'vue-devmeetup-eadcf',
       storageBucket: 'vue-devmeetup-eadcf.appspot.com'
     });
+    this.$store.dispatch('loadMeetups')
   }
 });
