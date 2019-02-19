@@ -23,12 +23,17 @@ new Vue({
   render: h => h(App),
   created() {
     firebase.initializeApp({
-      apiKey: 'AIzaSyAbA1H6ZLadHkQ0wuzS_1NYRkDiIgZKHlw',
-      authDomain: 'vue-devmeetup-eadcf.firebaseapp.com',
-      databaseURL: 'https://vue-devmeetup-eadcf.firebaseio.com',
-      projectId: 'vue-devmeetup-eadcf',
-      storageBucket: 'vue-devmeetup-eadcf.appspot.com'
+      apiKey: "AIzaSyAbA1H6ZLadHkQ0wuzS_1NYRkDiIgZKHlw",
+      authDomain: "vue-devmeetup-eadcf.firebaseapp.com",
+      databaseURL: "https://vue-devmeetup-eadcf.firebaseio.com",
+      projectId: "vue-devmeetup-eadcf",
+      storageBucket: "gs://vue-devmeetup-eadcf.appspot.com"
     });
-    this.$store.dispatch('loadMeetups')
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user);
+      }
+    });
+    this.$store.dispatch('loadMeetups');
   }
 });

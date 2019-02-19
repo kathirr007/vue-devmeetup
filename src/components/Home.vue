@@ -17,7 +17,7 @@
         v-if="loading"></v-progress-circular>
       </v-flex>
     </v-layout>
-    <v-layout row wrap v-if="loading">
+    <v-layout row wrap v-if="!loading">
       <v-flex xs12>
         <v-carousel style="cursor: pointer">
           <v-carousel-item

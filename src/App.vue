@@ -8,6 +8,12 @@
           </v-list-tile-action>
           <v-list-tile-content>{{item.title}}</v-list-tile-content>
         </v-list-tile>
+        <v-list-tile v-if="userIsAuthenticated">
+          <v-list-tile-action>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>Logout</v-list-tile-content>
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar dark color="teal darken-4">
@@ -26,6 +32,12 @@
         >
           <v-icon left dark class="hidden-sm-and-down">{{item.icon}}</v-icon>
           {{item.title}}
+        </v-btn>
+        <v-btn v-if="userIsAuthenticated"
+          class="text-capitalize"
+          flat @click="onLogout">
+          <v-icon left dark class="hidden-sm-and-down">exit_to_app</v-icon>
+          Logout
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -46,9 +58,9 @@
     computed: {
       menuItems() {
         let menuItems = [
-          { icon: "face", title: "Sign up", link: "/signup" },
-          { icon: "lock_open", title: "Sign in", link: "/signin" }
+          { icon: "face", title: "Sign up", link: "/signup" }, { icon: "lock_open", title: "Sign in", link: "/signin" }
         ];
+
         if (this.userIsAuthenticated) {
           menuItems = [
             {
@@ -60,13 +72,19 @@
             { icon: "person", title: "Profile", link: "/profile" }
           ];
         }
-        return menuItems;
+
+return menuItems;
       },
       userIsAuthenticated() {
         return (
-          this.$store.getters.user !== null &&
-          this.$store.getters.user !== undefined
+          this.$store.getters.user !== null
+          && this.$store.getters.user !== undefined
         );
+      }
+    },
+    methods: {
+      onLogout() {
+        this.$store.dispatch('logout');
       }
     }
   };
