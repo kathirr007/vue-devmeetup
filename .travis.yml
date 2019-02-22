@@ -14,10 +14,11 @@ script:
 # - chmod +x ./deploy-ghpages.sh
 # - chmod +x ./deploy.sh
 # - yarn build
+- "./deploy.sh"
 after_success:
 # this "deploy.sh" has code to deploy files  generated from vue production build
-- "./deploy.sh"
 # - gulp deploy
+# - "./deploy.sh"
 after_failure:
 after_script:
 before_deploy:
