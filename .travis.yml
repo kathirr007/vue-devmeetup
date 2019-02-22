@@ -1,7 +1,30 @@
+language: node_js
+node_js:
+- '10.15.1'
+- '8.10.0'
+cache: yarn
+before_install:
+- chmod 755 ./deploy.sh
+install:
+- yarn install
+before_script:
+# - git config --global user.email "travis@travis-ci.org"
+# - git config --global user.name "Travis"
+script:
+# - chmod +x ./deploy-ghpages.sh
+- chmod +x ./deploy.sh
+- yarn build
+after_success:
+- "./deploy.sh"
+# - gulp deploy
+after_failure:
+after_script:
+before_deploy:
 deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  on:
-    branch: master
+  # provider: pages
+  # skip-cleanup: true
+  # github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  # keep-history: true
+  # on:
+  #   branch: gh-pages
+after_deploy:  
