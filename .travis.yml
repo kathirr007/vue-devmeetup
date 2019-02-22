@@ -6,7 +6,7 @@ cache: yarn
 before_install:
 # - chmod 755 ./deploy.sh
 install:
-# - yarn install
+- yarn install
 before_script:
 # - git config --global user.email "travis@travis-ci.org"
 # - git config --global user.name "Travis"
