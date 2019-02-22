@@ -16,17 +16,18 @@ script:
 - yarn build
 after_success:
 # this "deploy.sh" has code to deploy files  generated from vue production build
-# - "./deploy.sh"
+- "./deploy.sh"
 # - gulp deploy
 after_failure:
 after_script:
 before_deploy:
 deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  local_dir: dist # Change this to your build directory
-  on:
-    branch: master
+# Standard GH-Pages Deploy  
+  # provider: pages
+  # skip-cleanup: true
+  # github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  # keep-history: true
+  # local_dir: dist # Change this to your build directory
+  # on:
+  #   branch: master
 after_deploy:  
