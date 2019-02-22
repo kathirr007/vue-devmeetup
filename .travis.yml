@@ -13,7 +13,7 @@ before_script:
 script:
 # - chmod +x ./deploy-ghpages.sh
 # - chmod +x ./deploy.sh
-- yarn build
+# - yarn build
 after_success:
 # this "deploy.sh" has code to deploy files  generated from vue production build
 - "./deploy.sh"
