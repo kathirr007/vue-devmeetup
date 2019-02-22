@@ -12,8 +12,8 @@ before_script:
 # - git config --global user.name "Travis"
 script:
 # - chmod +x ./deploy-ghpages.sh
-# - chmod +x ./deploy.sh
 # - yarn build
+- chmod +x ./deploy.sh
 - "./deploy.sh"
 after_success:
 # this "deploy.sh" has code to deploy files  generated from vue production build
