@@ -2,14 +2,12 @@
   "name": "my-devmeetup",
   "version": "0.1.0",
   "private": true,
-  "repo_information": {
-      "deploy-token": "9a92989efafe1cfd0d11335852613b47a9e0490d",
-  },
   "scripts": {
     "serve": "vue-cli-service serve --mode=development",
     "build": "vue-cli-service build --mode=production",
     "lint": "vue-cli-service lint",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy-token": "9a92989efafe1cfd0d11335852613b47a9e0490d",
   },
   "dependencies": {
     "date-fns": "^1.30.1",
