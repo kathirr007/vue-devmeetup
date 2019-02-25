@@ -7,7 +7,7 @@
     "build": "vue-cli-service build --mode=production",
     "lint": "vue-cli-service lint",
     "start": "node server.js",
-    "deploy-token": "9a92989efafe1cfd0d11335852613b47a9e0490d"
+    "deploy-token": "1b77e29876d9aeffbbf28e2a5b215e1f8cb2e08c"
   },
   "dependencies": {
     "date-fns": "^1.30.1",
