@@ -1,6 +1,6 @@
-# my-devmeetup
+# My-devmeetup Project from Vue Vuetify & Firebase Project Course
 
-[![Build Status](https://travis-ci.org/kathirr007/vue-devmeetup.svg?branch=master)](https://travis-ci.org/kathirr007/vue-devmeetup)
+[![Build Status](https://travis-ci.com/kathirr007/vue-devmeetup.svg?branch=master)](https://travis-ci.org/kathirr007/vue-devmeetup)
 
 ### Practice Vue Project using Vue Vuetify Firebase
 
