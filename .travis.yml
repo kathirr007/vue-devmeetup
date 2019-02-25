@@ -2,9 +2,6 @@ language: node_js
 node_js:
 - 10.15.1
 cache: yarn
-env:
-  global:
-  - secure: c5o+G0+ns4jjlvS57NhhynqVqWyw+RDzUbkTToADCn62ymscg894iQKw/JFDtqtJkL1+g2BvGOolf6t/4mZ1GNjpNOHotwVE3o69oCwkidlGd7CubB6YYz2N9YlGccCgH3uua6rxWQO0kUlt/dNDJCXdDJuXhbCetDEejAIlNs3rJoVBz0ztmy4VvvMNoUuO2QS33nwn9urTgHlk7wfpTBQrt9kzH5zK/Ge/mMfygB5OA4kVt1p4QUH9QXilme+TMdoVjFZw0A9DzNdCsHonxnI/0R9mUMYfLHEqdy5Cm6B/RR7B2QEPooKGELBzek+Z+2V903Cxpk0m9BFmdEIy+w6D+JMYqb448jjYzCFfpmLM7k42Vh7bo1I2ARCjTPTzH9CR68QEgBFkznN2vntHdqkFZN+7+t2sq00MnTm10F6ya/hpPWoi20Azshc4g4TEdXhWJkkWKU3TzrEDwruRchtiy/7/MYXFujQXVtEmsiJbemu2OyIMDCMzokudBXvcugizlMRocVrQEOXFuARZQO9paJTn+wqTBBgvB+NKXb6ygFkwF0lT+SAVzhfa81rpcl9cOTKwziLm3tlv9+6unjLxPx60uaa5b+GKAdKwH6VLY+QDWrcdyKcQ6qbNsQiq5lYCIY6fZSaNDljMBne2pXVI24AX3TQt/xAYhd3h7EA=
 before_install: 
 install:
 - yarn install
@@ -24,3 +21,6 @@ deploy:
   on:
     branch: master
 after_deploy: 
+env:
+  global:
+    secure: 3uScHNHzpgCEzfejHvxja9Qbwb/Mr/M86lK6ktTw9ABrqq01CL9d8i2YbUjJ1FUDyvpP6DjEU4CYoivwidrKf00rW/8cxeMSpBzY2vav78jQaGAFRfaz8mapsVX8PBd45M+nSslkeNlCwhJEX/9UA2COCO0vawldLxw/rzs8BjdK6t6fciKVorD0Vv49QAjvP9r0EDllj0yDybopXo1nt82peN0RTHNg3bG3vAiNzA8py/KKi5YHW9E6ukJm6OfXqFwrvhFurk5msrHZu599Pf+NviH2sY+3GxNKG2x5Gjt3b9amtH8AH+F9ijZLmI++6xJR/Z6e+GNfUmFrHv+u5Esk3YtcC7nM8KEXQJaWEZFBIvEcgvCN0xlqezZzmjN8ldUCoEeCgXYxfwd8RZ/gE3YMnQ3ekqOokX5oc23yuhJZ36A3RsrmYdMpP/7nw+LHJIKn7QXTFQUzDlxRvC7RrFkqZ//waET3uULA/7+b2sgW9kwY6AtKc8eQlBrW5DUPHzdqJ8NTca8EyrULQ2W1BMeX6en4pn8i9VKbi7fCc/wE/awkx+RFp32VfAYWL9K58k6VAhzJxBXKP4HupKhlRXdUgEO35l9/PnDkW6jk2KgHFARTbAyIJjLL9+QV8EfwoBrYi5DlzMyzUWgOePMs0xF+Ij2RHC8ELfn+MMJVgFc=
