@@ -8,11 +8,11 @@ self.__precacheManifest = [
     "url": "/vue-devmeetup/js/chunk-vendors.cc32bfdc.js"
   },
   {
-    "revision": "c4543148648bee8e6bc8",
-    "url": "/vue-devmeetup/js/app.65be0ecc.js"
+    "revision": "2b4557e1d898290c49bb",
+    "url": "/vue-devmeetup/js/app.10586062.js"
   },
   {
-    "revision": "c7653a27486ea37d69f9d7f49ad4d2aa",
+    "revision": "16bbae81a87841699da203061718d2b0",
     "url": "/vue-devmeetup/index.html"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/vue-devmeetup/css/chunk-vendors.fd57c053.css"
   },
   {
-    "revision": "c4543148648bee8e6bc8",
+    "revision": "2b4557e1d898290c49bb",
     "url": "/vue-devmeetup/css/app.2545e08d.css"
   },
   {
