@@ -15,7 +15,7 @@ before_deploy:
 deploy:
   provider: pages
   skip-cleanup: true
-  #   github-token: 91c486a7dce38647543cefbdf30aba058bfa3b73  # Set in the settings page of your repository, as a secure variable
+  # using this GH_TOKEN "Deploy token for travis-CI" for this deployment
   github-token: "$GH_TOKEN"
   keep-history: true
   local_dir: dist
@@ -24,4 +24,4 @@ deploy:
 after_deploy: 
 env:
   global:
-    secure: VWTE1zGsfMcIp9XUmoyyTec8xQaN1lPVJjuoC67FSU6OqfKTsjs1cZ+3A73T+I9PxNWUsThrXQ/1WwC72XHwqhzI4Q7Zut6j1L/umxRgILK6U45PoaRgMolSdI5Kel/t0u204+3sInEV6jHm3WDpNJxMduHF3CfU3G0FIGjQ/lkUz+yMXtyE+k9RUz6aWj/TOpgf4iKBShEKF+tu6EMGryaWXIZJrbhvr+1GUzTrW0TgLu0WSMwOojknw+u/GZVnL8TQtxVisLaeNpT6e4GUJVkFs/zmcT/il0UTFz7NGkokkVLb/rtmTD0CtLc5EIYZIGTj+68RRDO55JqVQHLWEg/hrYmctfAm3LPNEFjntEsUeerHu59tPp95bAMiJVlylZcYsdwdYj9JfpQTcwYiPcQumP2TuGYKhCozQ0YqCX9NR857vpZlR9UzMokFrCVrfp7mkjJ44TGXgTrAI3T4GvsXn8729uO/YRmhNgYU4yzbuCdCBcd7Z+ofuRrfZ219Ylj+dZibqOohlItnoF+0WTJs+XF7b+U0bCCei+WgSjmYUsT1Q+FCwlAOSP3Wu0k53OccarH94Re24C9/J9pblIPK4tHBzZbFL7UikUVCXX6vBwz8ojZxw4I2tt3cKcJ3uMCEwfm3q6FQON2vtUvtK4ADFv1XjzWy+JSgNAMkjZY=
+    secure: r/7jYrHt8T2c8OUfpkdwxlYxhxOfEMBEKSZPdh65jBM7yzQ4nz/F4IL6hxLFlXmhh9gd3gHLwN3TFNNlMg4vRVScGmbKy7iYCe/mG1Icyha2c4WIRWG48JUsMBIi78Cc4ypJ/5pLWUTCY3ZJhxPAWyF1L0ZazWwBSz4xsWx9jyQGqUsE6tQsELESIa1NJVtHnl+ydQ/68LX0NX1G0qZMiXTW+iNrRfPvD2SnkkxjdtBmm92Tcs8I02mH9bptxyEo0N3mz74OFO4I6qjUaSpDV9dUj6BNAc7dlnRQGa4k2aNjOISAn/kc+1rOZAH+avHWoekjNMUd5g9WCwUP5rFG0mu+hS5J34plfRYKg8klCtPuj0JK2xJKPcl2gKPs+wNqQSqZzRU3ee+cF3Nt+MY/eIgxJTzSzez0o53MkrgNW+45NCRnPJMEGaCusZAdc/y0W6EGNZxxq0Ku8OB50xWO0U6aKpcX/TBhbibXEpiwev2jRxCVAkesvQTL36rT1+qiRLS/sBAX0ITicvxWeoht5jtFzJbof7ptct1AVvbcMC08q1O5BO1S4Ua97Zmi9f1D/+uuDOCqbflyLEZf7ng29Lii7p8bOACWKXCQWydjeFMmX2Yp/62dAhMB/S7yaDDJxn7TYD3M2xmasPYrwp4XNvTP3FF+h+3mvD84RXNLR/k=
