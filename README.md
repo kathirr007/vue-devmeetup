@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/kathirr007/vue-devmeetup.svg?branch=master)](https://travis-ci.org/kathirr007/vue-devmeetup)
 
+### Practice Vue Project using Vue Vuetify Firebase
+
+To check live version please checkout **[here](https://kathirr007.github.io/vue-devmeetup/)**
+
 ## Project setup
 ```
 npm install
