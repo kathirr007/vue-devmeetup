@@ -1,38 +1,26 @@
 language: node_js
 node_js:
-- '10.15.1'
-# - '8.10.0'
+- 10.15.1
 cache: yarn
 env:
   global:
-    secure: sWp693Q7wOFYPVwArG+olHeUnzEvGMZI9yPGoNNPM7VJ1xDGLOSFlWTVbrk2impuR3ogX/ZkcP5HLYZc2Ge3YTjQl9AqZ2+GuOFPMWpGlosxi8VhSaMwWcKjzgjLthaijrFARbPshGkywLfxmNAjXhVNoFKq/Os7A4fvhz4aAQaOlq/b73zJSqwpuVNdCLC4Lo9CeZT9dUr6vinof5/Fd5x/IPzEhg/WqgktAgRibGAd3TCujTrhAv0voTexlakBXqaYGAuTYZw93C7L+YhJZiJ0Q8ujA/oM07D6941jT7f3sFLpRTBBsgXRhiplBmDJXyk8xKXyN2YxXQWXznsLaSFvZO7R1Y2fC/b5rw5mh9BiWJJlwKCiUIPDe7RbxzhKMKr8LXdcPLonbOoIgaxSjUUiZRqgI3VuDQXtlcOG68toQsSurmbofL26cqvnkc88ZbF36iVm9pfwY5mt1n1jfDRW58dGfYLUhmRxdLJHez2hSHfE5sIgAMo3JjdV14bLzbQ9aO0n0OES6EiK7WyuaZHm5/qsrf15sFpM/tiWqXaP94p51T5C8HkGbJC+g/lI69RpMT5QsQPSBMsot4YsdBBoer6gDn2f6/fM6ZD/yxJo7Ua7F7JUIXAG/BCBS0GynES3pwjY6EFIgAdZ88pISaaXBhmSfNLj3I4XKZs72Ao=
-before_install:
-# - chmod 755 ./deploy.sh
+  - secure: c5o+G0+ns4jjlvS57NhhynqVqWyw+RDzUbkTToADCn62ymscg894iQKw/JFDtqtJkL1+g2BvGOolf6t/4mZ1GNjpNOHotwVE3o69oCwkidlGd7CubB6YYz2N9YlGccCgH3uua6rxWQO0kUlt/dNDJCXdDJuXhbCetDEejAIlNs3rJoVBz0ztmy4VvvMNoUuO2QS33nwn9urTgHlk7wfpTBQrt9kzH5zK/Ge/mMfygB5OA4kVt1p4QUH9QXilme+TMdoVjFZw0A9DzNdCsHonxnI/0R9mUMYfLHEqdy5Cm6B/RR7B2QEPooKGELBzek+Z+2V903Cxpk0m9BFmdEIy+w6D+JMYqb448jjYzCFfpmLM7k42Vh7bo1I2ARCjTPTzH9CR68QEgBFkznN2vntHdqkFZN+7+t2sq00MnTm10F6ya/hpPWoi20Azshc4g4TEdXhWJkkWKU3TzrEDwruRchtiy/7/MYXFujQXVtEmsiJbemu2OyIMDCMzokudBXvcugizlMRocVrQEOXFuARZQO9paJTn+wqTBBgvB+NKXb6ygFkwF0lT+SAVzhfa81rpcl9cOTKwziLm3tlv9+6unjLxPx60uaa5b+GKAdKwH6VLY+QDWrcdyKcQ6qbNsQiq5lYCIY6fZSaNDljMBne2pXVI24AX3TQt/xAYhd3h7EA=
+before_install: 
 install:
 - yarn install
-before_script:
-# - git config --global user.email "travis@travis-ci.org"
-# - git config --global user.name "Travis"
+before_script: 
 script:
-# - chmod +x ./deploy-ghpages.sh
-- yarn build # Change this script to run your production build command
-# - chmod +x ./deploy.sh
-# - "./deploy.sh"
-after_success:
-# this "deploy.sh" has code to deploy files generated from vue production build
-# - gulp deploy
-# - "./deploy.sh"
-after_failure:
-after_script:
-before_deploy:
+- yarn build
+after_success: 
+after_failure: 
+after_script: 
+before_deploy: 
 deploy:
-# Standard GH-Pages Deploy  
   provider: pages
   skip-cleanup: true
-#   github-token: fd8d095ed53a0c01428a583edf6fa199c0c5fae3  # Set in the settings page of your repository, as a secure variable
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  github-token: "$GITHUB_TOKEN"
   keep-history: true
-  local_dir: dist # Change this to your build directory
+  local_dir: dist
   on:
     branch: master
-after_deploy:
+after_deploy: 
