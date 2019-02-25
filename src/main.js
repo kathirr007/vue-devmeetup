@@ -17,6 +17,9 @@ import RegisterDialog from './components/Meetup/Registration/RegisterDialog.vue'
 // Vue.use(Vuetify);
 Vue.config.productionTip = false;
 
+/* Github token for travis deployment
+const GH_TOKEN=ef66c37d9505eee83cd1ac56caa9e7651bbaafe2 */
+
 Vue.filter('date', DateFilter);
 Vue.component('app-alert', AlertCmp);
 Vue.component('app-edit-meetup-details-dialog', EditMeetupDetailsDialog);
