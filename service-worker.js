@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/vue-devmeetup/precache-manifest.fb099d6caccd236831860ae6002c08c1.js"
+  "/vue-devmeetup/precache-manifest.34a58b5f465180653185799916703fa0.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "my-devmeetup"});

@@ -1,0 +1,30 @@
+self.__precacheManifest = [
+  {
+    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "url": "/vue-devmeetup/robots.txt"
+  },
+  {
+    "revision": "5365c7c05f14ed233da5",
+    "url": "/vue-devmeetup/js/chunk-vendors.24197a0e.js"
+  },
+  {
+    "revision": "076e3709d82585d030ba",
+    "url": "/vue-devmeetup/js/app.e3aa7ec1.js"
+  },
+  {
+    "revision": "f32e0ecdeed889c72022ec16f5cf09f7",
+    "url": "/vue-devmeetup/index.html"
+  },
+  {
+    "revision": "5365c7c05f14ed233da5",
+    "url": "/vue-devmeetup/css/chunk-vendors.eec3dc95.css"
+  },
+  {
+    "revision": "076e3709d82585d030ba",
+    "url": "/vue-devmeetup/css/app.19512942.css"
+  },
+  {
+    "revision": "d405e178e163f345f1729cc0e68f36ce",
+    "url": "/vue-devmeetup/404.html"
+  }
+];
