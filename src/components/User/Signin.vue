@@ -10,91 +10,174 @@
         <v-card>
           <v-card-text>
             <v-container>
-              <form @submit.prevent="onSignin">
-                <v-layout row>
-                  <v-flex xs12>
-                    <v-text-field
-                      name="email"
-                      label="Email Address"
-                      id="email"
-                      v-model="email"
-                      type="email"
-                      color="teal"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                </v-layout>
-                <v-layout row>
-                  <v-flex xs12>
-                    <v-text-field
-                      name="password"
-                      label="Password"
-                      id="password"
-                      v-model="password"
-                      type="password"
-                      color="teal"
-                      required
-                    ></v-text-field>
-                  </v-flex>
-                </v-layout>
-                <v-layout row>
-                  <v-flex xs12>
-                    <v-btn color="teal white--text ma-0" type="submit" :disabled="loading" :loading="loading">Sign in
-                      <span slot="loader" class="custom-loader">
-                        <v-icon light>cached</v-icon>
-                      </span>
-                    </v-btn>
-                  </v-flex>
-                </v-layout>
-              </form>
+              <transition v-if="isForgotPassword" name="fade" mode="out-in">
+                <form @submit.prevent="onResetPassword">
+                  <v-layout row>
+                    <v-flex xs12>
+                      <v-text-field
+                        name="email"
+                        label="Email Address"
+                        id="email"
+                        v-model="email"
+                        type="email"
+                        color="teal"
+                        required
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row>
+                    <v-flex xs12>
+                      <v-btn
+                        color="teal white--text ma-0"
+                        type="submit"
+                        :disabled="loading"
+                        :loading="loading"
+                        >Reset Password
+                        <span slot="loader" class="custom-loader">
+                          <v-icon light>cached</v-icon>
+                        </span>
+                      </v-btn>
+                      <v-btn
+                        color="teal white--text ma-0 ml-4"
+                        @click="$store.commit('toggleForgotPassword', !isForgotPassword)"
+                        >Sign in
+                        <span slot="loader" class="custom-loader">
+                          <v-icon light>cached</v-icon>
+                        </span>
+                      </v-btn>
+                    </v-flex>
+                  </v-layout>
+                </form>
+              </transition>
+              <transition v-else name="fade" mode="out-in">
+                <form @submit.prevent="onSignin">
+                  <v-layout row>
+                    <v-flex xs12>
+                      <v-text-field
+                        name="email"
+                        label="Email Address"
+                        id="email"
+                        v-model="email"
+                        type="email"
+                        color="teal"
+                        required
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row>
+                    <v-flex xs12>
+                      <v-text-field
+                        name="password"
+                        label="Password"
+                        id="password"
+                        v-model="password"
+                        type="password"
+                        color="teal"
+                        required
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row>
+                    <v-flex xs12>
+                      <v-btn
+                        color="teal white--text ma-0"
+                        type="submit"
+                        :disabled="loading"
+                        :loading="loading"
+                        >Sign in
+                        <span slot="loader" class="custom-loader">
+                          <v-icon light>cached</v-icon>
+                        </span>
+                      </v-btn>
+                      <v-btn
+                        color="teal white--text ma-0 ml-4"
+                        @click="$store.commit('toggleForgotPassword', !isForgotPassword)"
+                        >Forgot Password
+                        <span slot="loader" class="custom-loader">
+                          <v-icon light>cached</v-icon>
+                        </span>
+                      </v-btn>
+                    </v-flex>
+                  </v-layout>
+                </form>
+              </transition>
             </v-container>
           </v-card-text>
         </v-card>
       </v-flex>
     </v-layout>
+    <v-snackbar v-model="snackbar" :multi-line="multiLine">
+      {{ info }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="red" text v-bind="attrs" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        email: "",
-        password: ""
-      };
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      multiLine: true,
+      snackbar: false,
+      info: ``
+    };
+  },
+  computed: {
+    user() {
+      return this.$store.getters.user;
     },
-    computed: {
-      user() {
-        return this.$store.getters.user;
-      },
-      err() {
-        return this.$store.getters.error;
-      },
-      loading() {
-        return this.$store.getters.loading;
+    err() {
+      return this.$store.getters.error;
+    },
+    loading() {
+      return this.$store.getters.loading;
+    },
+    isForgotPassword() {
+      return this.$store.getters.isForgotPassword;
+    },
+    isEmailSent() {
+      return this.$store.getters.isEmailSent;
+    }
+  },
+  watch: {
+    user(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push("/");
       }
     },
-    watch: {
-      user(value) {
-        if (value !== null && value !== undefined) {
-          this.$router.push("/");
-        }
-      }
-    },
-    methods: {
-      onSignin() {
-        this.$store.dispatch("signUserIn", {
-          email: this.email,
-          password: this.password
-        });
-      },
-      onDismissed() {
-        console.log('Alert Dismissed...');
-        this.$store.dispatch('clearError');
+    isEmailSent(newVal, oldVal) {
+      debugger;
+      if (newVal) {
+        this.info = `Password reset has been sent to ${this.email}`;
+        this.snackbar = true;
       }
     }
-  };
+  },
+  methods: {
+    onSignin() {
+      this.$store.dispatch("signUserIn", {
+        email: this.email,
+        password: this.password
+      });
+    },
+    onResetPassword() {
+      this.$store.dispatch("resetPassword", {
+        email: this.email
+      });
+    },
+    onDismissed() {
+      console.log("Alert Dismissed...");
+      this.$store.dispatch("clearError");
+    }
+  }
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -52,6 +52,7 @@
       "indent": 0,
       "comma-dangle": 0,
       "quotes": 0,
+      "no-unused-vars": 0,
       "import/extensions": [
         "off",
         "always",
@@ -82,7 +83,9 @@
       "no-trailing-spaces": 0,
       "newline-before-return": 0,
       "no-shadow": 0,
-      "vue/no-unused-vars": 0
+      "vue/no-unused-vars": 0,
+      "no-debugger": 0,
+      "multiline-comment-style": 0
     },
     "parserOptions": {
       "parser": "babel-eslint"
