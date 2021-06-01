@@ -106,14 +106,14 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <v-snackbar v-model="snackbar" :multi-line="multiLine">
+    <v-snackbar top right v-model="snackbar" :multi-line="multiLine" color="teal">
       {{ info }}
 
-      <template v-slot:action="{ attrs }">
-        <v-btn color="red" text v-bind="attrs" @click="snackbar = false">
-          Close
-        </v-btn>
-      </template>
+      <v-btn color="teal darken-4" text @click="snackbar = false">
+        Close
+      </v-btn>
+      <!-- <template v-slot:action="{ attrs }">
+      </template> -->
     </v-snackbar>
   </v-container>
 </template>
@@ -153,7 +153,6 @@ export default {
       }
     },
     isEmailSent(newVal, oldVal) {
-      debugger;
       if (newVal) {
         this.info = `Password reset has been sent to ${this.email}`;
         this.snackbar = true;
